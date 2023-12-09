@@ -1,5 +1,13 @@
 import { type Task } from '../../types/Board';
-import { CardContainer } from './styles';
+import {
+  CardContainer,
+  TitleWrapper,
+  EditIcon,
+  ContentWrapper,
+  ArrowLeftIcon,
+  DeleteIcon,
+  ArrowRightIcon,
+} from './styles';
 import { useKanban } from '../../contexts/KanbanContext';
 
 interface CardProps {
@@ -19,28 +27,22 @@ const Card = ({ task }: CardProps) => {
   };
 
   return (
-    <CardContainer className="group hover:cursor-pointer">
-      <h3>{titulo}</h3>
-      <p>{conteudo}</p>
-      <div className="justify-between hidden group-hover:flex">
-        {lista !== 'ToDo' && (
-          <button className="btn btn-primary" onClick={movePrevious}>
-            {'<'}
-          </button>
-        )}
-        <button
-          className="btn btn-secondary"
+    <CardContainer className="group">
+      <ContentWrapper>
+        <TitleWrapper>
+          <h3>{titulo}</h3>
+          <EditIcon />
+        </TitleWrapper>
+        <p>{conteudo}</p>
+      </ContentWrapper>
+      <div className="flex justify-between invisible mt-4 group-hover:visible">
+        {lista !== 'ToDo' ? <ArrowLeftIcon onClick={movePrevious} /> : <div />}
+        <DeleteIcon
           onClick={() => {
             deleteTask(task);
           }}
-        >
-          Excluir
-        </button>
-        {lista !== 'Done' && (
-          <button className="btn btn-primary" onClick={moveNext}>
-            {'>'}
-          </button>
-        )}
+        />
+        {lista !== 'Done' ? <ArrowRightIcon onClick={moveNext} /> : <div />}
       </div>
     </CardContainer>
   );

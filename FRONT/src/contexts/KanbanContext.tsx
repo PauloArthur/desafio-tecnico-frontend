@@ -44,7 +44,8 @@ export const KanbanProvider = ({
       id: '1',
       lista: 'ToDo',
       titulo: 'some title',
-      conteudo: 'some content',
+      conteudo:
+        'some content, some contentsome contentsome contentsome contentsome contentsome content, some contentsome contentsome contentsome content',
     },
     {
       id: '11',

@@ -3,7 +3,7 @@ import { KanbanProvider } from './contexts/KanbanContext';
 
 function App(): JSX.Element {
   return (
-    <div className="h-screen p-10 text-center">
+    <div className="h-screen p-10">
       <KanbanProvider>
         <KanbanBoard />
       </KanbanProvider>
