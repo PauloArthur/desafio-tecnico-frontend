@@ -5,11 +5,7 @@ import {
   useEffect,
   createContext,
 } from 'react';
-import {
-  type Task,
-  type ListType,
-  type MovementList,
-} from '../types/KanbanBoard';
+import { type Task, type ListType, type MovementList } from '../types/Board';
 
 const previousList: MovementList = {
   ToDo: 'ToDo',

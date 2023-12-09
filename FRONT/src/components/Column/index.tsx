@@ -1,5 +1,5 @@
 import Card from '../Card';
-import { type List } from '../../types/KanbanBoard';
+import { type List } from '../../types/Board';
 import { ListContainer, Container } from './styles';
 
 const Column = ({ name, tasks }: List): JSX.Element => {

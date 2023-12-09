@@ -1,4 +1,4 @@
-import { type Task } from '../../types/KanbanBoard';
+import { type Task } from '../../types/Board';
 import { CardContainer } from './styles';
 import { useKanban } from '../../contexts/KanbanContext';
 
