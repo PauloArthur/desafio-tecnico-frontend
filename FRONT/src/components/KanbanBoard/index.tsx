@@ -1,4 +1,4 @@
-import List from '../List';
+import KanbanColumn from '../KanbanColumn';
 import { useKanban } from './useKanban';
 
 const KanbanBoard = () => {
@@ -6,9 +6,9 @@ const KanbanBoard = () => {
 
   return (
     <div className="container h-full mx-auto columns-3">
-      <List name="ToDo" cards={todoList} />
-      <List name="Doing" cards={doingList} />
-      <List name="Done" cards={doneList} />
+      <KanbanColumn name="ToDo" cards={todoList} />
+      <KanbanColumn name="Doing" cards={doingList} />
+      <KanbanColumn name="Done" cards={doneList} />
     </div>
   );
 };

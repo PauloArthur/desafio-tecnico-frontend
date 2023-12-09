@@ -1,5 +1,7 @@
+import { useState } from 'react';
+
 export const useKanban = () => {
-  const list: Card[] = [
+  const listMock: Card[] = [
     {
       id: '1',
       lista: 'ToDo',
@@ -36,15 +38,52 @@ export const useKanban = () => {
       titulo: 'some title',
       conteudo: 'some content',
     },
+    {
+      id: '3',
+      lista: 'Done',
+      titulo: 'some title',
+      conteudo: 'some content',
+    },
+    {
+      id: '31',
+      lista: 'Done',
+      titulo: 'some title',
+      conteudo: 'some content',
+    },
+    {
+      id: '3',
+      lista: 'Done',
+      titulo: 'some title',
+      conteudo: 'some content',
+    },
+    {
+      id: '31',
+      lista: 'Done',
+      titulo: 'some title',
+      conteudo: 'some content',
+    },
+    {
+      id: '3',
+      lista: 'Done',
+      titulo: 'some title',
+      conteudo: 'some content',
+    },
+    {
+      id: '31',
+      lista: 'Done',
+      titulo: 'some title',
+      conteudo: 'some content',
+    },
   ];
 
+  const [list, setList] = useState<Card[]>(listMock);
   const todoList = list.filter((item) => item.lista === 'ToDo');
   const doingList = list.filter((item) => item.lista === 'Doing');
   const doneList = list.filter((item) => item.lista === 'Done');
-
   return {
     todoList,
     doingList,
     doneList,
+    moveCard,
   };
 };
