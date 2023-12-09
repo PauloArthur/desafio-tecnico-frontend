@@ -5,25 +5,45 @@ import {
   useEffect,
   createContext,
 } from 'react';
+import {
+  type Task,
+  type ListType,
+  type MovementList,
+} from '../types/KanbanBoard';
+
+const previousList: MovementList = {
+  ToDo: 'ToDo',
+  Doing: 'ToDo',
+  Done: 'Doing',
+};
+const nextList: MovementList = {
+  ToDo: 'Doing',
+  Doing: 'Done',
+  Done: 'Done',
+};
 
 const KanbanContext = createContext<KanbanHook>({
   todoList: [],
   doingList: [],
   doneList: [],
-  moveCard: (_card: Card, _listType: ListType) => null,
+  deleteTask: (_task: Task) => null,
+  moveTaskNext: (_task: Task, _listType: ListType) => null,
+  moveTaskPrevious: (_task: Task, _listType: ListType) => null,
 });
 
 interface KanbanHook {
-  todoList: Card[];
-  doingList: Card[];
-  doneList: Card[];
-  moveCard: (card: Card, listType: ListType) => void;
+  todoList: Task[];
+  doingList: Task[];
+  doneList: Task[];
+  deleteTask: (task: Task) => void;
+  moveTaskNext: (task: Task, listType: ListType) => void;
+  moveTaskPrevious: (task: Task, listType: ListType) => void;
 }
 
 export const KanbanProvider = ({
   children,
 }: PropsWithChildren): JSX.Element => {
-  const listMock: Card[] = [
+  const listMock: Task[] = [
     {
       id: '1',
       lista: 'ToDo',
@@ -60,52 +80,31 @@ export const KanbanProvider = ({
       titulo: 'some title',
       conteudo: 'some content',
     },
-    {
-      id: '3',
-      lista: 'Done',
-      titulo: 'some title',
-      conteudo: 'some content',
-    },
-    {
-      id: '31',
-      lista: 'Done',
-      titulo: 'some title',
-      conteudo: 'some content',
-    },
-    {
-      id: '3',
-      lista: 'Done',
-      titulo: 'some title',
-      conteudo: 'some content',
-    },
-    {
-      id: '31',
-      lista: 'Done',
-      titulo: 'some title',
-      conteudo: 'some content',
-    },
-    {
-      id: '3',
-      lista: 'Done',
-      titulo: 'some title',
-      conteudo: 'some content',
-    },
-    {
-      id: '31',
-      lista: 'Done',
-      titulo: 'some title',
-      conteudo: 'some content',
-    },
   ];
 
-  const [list, setList] = useState<Card[]>(listMock);
+  const [list, setList] = useState<Task[]>(listMock);
   const todoList = list.filter((item) => item.lista === 'ToDo');
   const doingList = list.filter((item) => item.lista === 'Doing');
   const doneList = list.filter((item) => item.lista === 'Done');
 
-  const moveCard = (card: Card, listType: ListType) => {
-    const newList = list.filter((item) => item.id !== card.id);
-    setList([...newList, { ...card, lista: listType }]);
+  const moveTask = (task: Task, listType: ListType) => {
+    if (listType === task.lista) return;
+
+    const newList = list.filter((item) => item.id !== task.id);
+    setList([...newList, { ...task, lista: listType }]);
+  };
+
+  const moveTaskPrevious = (task: Task, type: ListType) => {
+    moveTask(task, previousList[type]);
+  };
+
+  const moveTaskNext = (task: Task, type: ListType) => {
+    moveTask(task, nextList[type]);
+  };
+
+  const deleteTask = (task: Task) => {
+    const newList = list.filter((item) => item.id !== task.id);
+    setList(newList);
   };
 
   useEffect(() => {}, []);
@@ -114,7 +113,9 @@ export const KanbanProvider = ({
     todoList,
     doingList,
     doneList,
-    moveCard,
+    deleteTask,
+    moveTaskNext,
+    moveTaskPrevious,
   };
 
   return (

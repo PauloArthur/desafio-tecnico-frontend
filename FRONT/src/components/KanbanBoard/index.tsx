@@ -6,9 +6,9 @@ const KanbanBoard = () => {
 
   return (
     <div className="container h-full mx-auto columns-3">
-      <KanbanColumn name="ToDo" cards={todoList} />
-      <KanbanColumn name="Doing" cards={doingList} />
-      <KanbanColumn name="Done" cards={doneList} />
+      <KanbanColumn name="ToDo" tasks={todoList} />
+      <KanbanColumn name="Doing" tasks={doingList} />
+      <KanbanColumn name="Done" tasks={doneList} />
     </div>
   );
 };
