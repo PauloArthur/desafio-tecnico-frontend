@@ -1,6 +1,28 @@
-import { useState } from 'react';
+import {
+  type PropsWithChildren,
+  useState,
+  useContext,
+  useEffect,
+  createContext,
+} from 'react';
 
-export const useKanban = () => {
+const KanbanContext = createContext<KanbanHook>({
+  todoList: [],
+  doingList: [],
+  doneList: [],
+  moveCard: (_card: Card, _listType: ListType) => null,
+});
+
+interface KanbanHook {
+  todoList: Card[];
+  doingList: Card[];
+  doneList: Card[];
+  moveCard: (card: Card, listType: ListType) => void;
+}
+
+export const KanbanProvider = ({
+  children,
+}: PropsWithChildren): JSX.Element => {
   const listMock: Card[] = [
     {
       id: '1',
@@ -80,10 +102,27 @@ export const useKanban = () => {
   const todoList = list.filter((item) => item.lista === 'ToDo');
   const doingList = list.filter((item) => item.lista === 'Doing');
   const doneList = list.filter((item) => item.lista === 'Done');
-  return {
+
+  const moveCard = (card: Card, listType: ListType) => {
+    const newList = list.filter((item) => item.id !== card.id);
+    setList([...newList, { ...card, lista: listType }]);
+  };
+
+  useEffect(() => {}, []);
+
+  const hooks: KanbanHook = {
     todoList,
     doingList,
     doneList,
     moveCard,
   };
+
+  return (
+    <KanbanContext.Provider value={hooks}>{children}</KanbanContext.Provider>
+  );
 };
+
+/**
+ * Modal Provider Call Function
+ */
+export const useKanban = (): KanbanHook => useContext(KanbanContext);
