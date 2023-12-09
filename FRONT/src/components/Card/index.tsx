@@ -1,13 +1,22 @@
+import { type Task } from '../../types/KanbanBoard';
 import { CardContainer } from './styles';
+import { useKanban } from '../../contexts/KanbanContext';
 
 interface CardProps {
-  card: Card;
-  moveNext: (card: Card) => void;
-  movePrevious: (card: Card) => void;
+  task: Task;
 }
 
-const Card = ({ card, moveNext, movePrevious }: CardProps) => {
-  const { titulo, conteudo, lista } = card;
+const Card = ({ task }: CardProps) => {
+  const { titulo, conteudo, lista } = task;
+  const { moveTaskPrevious, moveTaskNext, deleteTask } = useKanban();
+
+  const movePrevious = () => {
+    moveTaskPrevious(task, lista);
+  };
+
+  const moveNext = () => {
+    moveTaskNext(task, lista);
+  };
 
   return (
     <CardContainer className="group hover:cursor-pointer">
@@ -15,23 +24,20 @@ const Card = ({ card, moveNext, movePrevious }: CardProps) => {
       <p>{conteudo}</p>
       <div className="justify-between hidden group-hover:flex">
         {lista !== 'ToDo' && (
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              movePrevious(card);
-            }}
-          >
+          <button className="btn btn-primary" onClick={movePrevious}>
             {'<'}
           </button>
         )}
-        <button className="btn btn-secondary">Excluir</button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => {
+            deleteTask(task);
+          }}
+        >
+          Excluir
+        </button>
         {lista !== 'Done' && (
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              moveNext(card);
-            }}
-          >
+          <button className="btn btn-primary" onClick={moveNext}>
             {'>'}
           </button>
         )}
