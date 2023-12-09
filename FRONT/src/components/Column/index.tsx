@@ -1,11 +1,13 @@
 import Card from '../Card';
+import AddTaskButton from '../AddTaskButton';
 import { type List } from '../../types/Board';
 import { ListContainer, Container } from './styles';
 
 const Column = ({ name, tasks }: List): JSX.Element => {
   return (
-    <Container>
+    <Container className="group/column">
       <h2 className="px-2 py-4 text-2xl font-bold">{name}</h2>
+      {name === 'ToDo' && <AddTaskButton />}
       <ListContainer>
         {tasks.map((task) => (
           <Card key={task.id} task={task} />
