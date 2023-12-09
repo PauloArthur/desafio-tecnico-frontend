@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Button, Container } from './styles';
+import { NewTaskCardTrigger, Container } from './styles';
 import { CiCirclePlus } from 'react-icons/ci';
 import NewTaskCard from './NewTaskCard';
 
@@ -14,13 +14,13 @@ const AddTaskButton = () => {
           : 'group-hover/column:max-h-[80px] group-hover/column:mb-4'
       }`}
     >
-      <Button
+      <NewTaskCardTrigger
         onClick={() => {
           setIsAddingTask(true);
         }}
       >
         <CiCirclePlus />
-      </Button>
+      </NewTaskCardTrigger>
       <NewTaskCard
         isOpen={isAddingTask}
         onClose={() => {

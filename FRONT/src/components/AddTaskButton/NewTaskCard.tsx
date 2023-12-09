@@ -1,4 +1,12 @@
-import { CardContainer } from './styles';
+import { type ChangeEvent, useState } from 'react';
+import {
+  Input,
+  Button,
+  Textarea,
+  CloseIcon,
+  InputWrapper,
+  CardContainer,
+} from './styles';
 
 interface NewTaskCardProps {
   isOpen: boolean;
@@ -6,12 +14,35 @@ interface NewTaskCardProps {
 }
 
 const NewTaskCard = ({ isOpen, onClose }: NewTaskCardProps): JSX.Element => {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+
+  const setTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+  const setContentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+  };
+
   return (
     <CardContainer className={`${isOpen ? 'active' : ''}`}>
-      <input type="text" />
-      <textarea name="content" id="" cols={30} rows={10}></textarea>
-      <button onClick={onClose}>X</button>
-      <button onClick={onClose}>Salvar</button>
+      <InputWrapper>
+        <Input
+          type="text"
+          value={title}
+          placeholder="Título"
+          onChange={setTitleHandler}
+        />
+        <CloseIcon onClick={onClose} />
+      </InputWrapper>
+      <Textarea
+        rows={5}
+        value={content}
+        name="content"
+        placeholder="Conteúdo"
+        onChange={setContentHandler}
+      />
+      <Button onClick={onClose}>Salvar</Button>
     </CardContainer>
   );
 };
