@@ -44,6 +44,7 @@ export const NewTaskCardTrigger = styled.button`
   border-radius: 16px;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
   &:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.3);

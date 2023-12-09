@@ -5,7 +5,7 @@ const sizes = css`
   width: 100%;
   height: 48px;
   font-size: 16px;
-  padding: 8px 16px;
+  padding: 12px 16px;
 `;
 
 const centerFlex = css`
@@ -28,9 +28,8 @@ export const Container = styled.div`
   max-height: 0px;
   overflow: hidden;
   position: relative;
-  transition: all 0.3s ease;
   &.active {
-    max-height: 280px;
+    min-height: 180px;
     margin-bottom: 16px;
   }
 `;
@@ -39,9 +38,9 @@ export const CardContainer = styled.div`
   top: 0;
   opacity: 0;
   width: 100%;
-  padding: 16px;
   height: 280px;
   max-height: 80px;
+  padding: 16px 24px;
   border-radius: 16px;
   z-index: -1;
   position: absolute;
@@ -49,7 +48,7 @@ export const CardContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   &.active {
     opacity: 1;
     z-index: 10;
@@ -59,6 +58,7 @@ export const CardContainer = styled.div`
 
 export const InputWrapper = styled.div`
   ${centerFlex}
+  padding: 16px 0;
   justify-content: space-between;
 `;
 
@@ -76,6 +76,7 @@ export const CloseIcon = styled(FaTimes)`
 export const Textarea = styled.textarea`
   ${sizes}
   height: auto;
+  margin-bottom: 16px;
   ${inputStyles}
 `;
 
@@ -84,9 +85,10 @@ export const Button = styled.button`
   width: auto;
   color: #fff;
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.3);
+  margin-bottom: 16px;
+  background-color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s ease;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
   }
 `;

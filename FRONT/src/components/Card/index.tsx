@@ -1,14 +1,17 @@
 import { type Task } from '../../types/Board';
 import {
+  ContentWrapper,
   CardContainer,
   TitleWrapper,
   EditIcon,
-  ContentWrapper,
+  ActionsWrapper,
   ArrowLeftIcon,
   DeleteIcon,
   ArrowRightIcon,
 } from './styles';
+import EditTaskCard from '../EditTaskCard';
 import { useKanban } from '../../contexts/KanbanContext';
+import { useState } from 'react';
 
 interface CardProps {
   task: Task;
@@ -16,6 +19,7 @@ interface CardProps {
 
 const Card = ({ task }: CardProps) => {
   const { titulo, conteudo, lista } = task;
+  const [isEditingTask, setIsEditingTask] = useState(false);
   const { moveTaskPrevious, moveTaskNext, deleteTask } = useKanban();
 
   const movePrevious = () => {
@@ -27,23 +31,41 @@ const Card = ({ task }: CardProps) => {
   };
 
   return (
-    <CardContainer className="group">
+    <CardContainer className={`${isEditingTask ? 'active' : ''}`}>
       <ContentWrapper>
-        <TitleWrapper>
-          <h3>{titulo}</h3>
-          <EditIcon />
-        </TitleWrapper>
-        <p>{conteudo}</p>
+        <div>
+          <TitleWrapper>
+            <h3>{titulo}</h3>
+            <EditIcon
+              onClick={() => {
+                setIsEditingTask(true);
+              }}
+            />
+          </TitleWrapper>
+          <p>{conteudo}</p>
+        </div>
+        <ActionsWrapper className="actionsWrapper group-hover/column:opacity-25">
+          {lista !== 'ToDo' ? (
+            <ArrowLeftIcon onClick={movePrevious} />
+          ) : (
+            <div />
+          )}
+          <DeleteIcon
+            className="deleteIcon"
+            onClick={() => {
+              deleteTask(task);
+            }}
+          />
+          {lista !== 'Done' ? <ArrowRightIcon onClick={moveNext} /> : <div />}
+        </ActionsWrapper>
       </ContentWrapper>
-      <div className="flex justify-between invisible mt-4 group-hover:visible">
-        {lista !== 'ToDo' ? <ArrowLeftIcon onClick={movePrevious} /> : <div />}
-        <DeleteIcon
-          onClick={() => {
-            deleteTask(task);
-          }}
-        />
-        {lista !== 'Done' ? <ArrowRightIcon onClick={moveNext} /> : <div />}
-      </div>
+      <EditTaskCard
+        task={task}
+        isOpen={isEditingTask}
+        onClose={() => {
+          setIsEditingTask(false);
+        }}
+      />
     </CardContainer>
   );
 };

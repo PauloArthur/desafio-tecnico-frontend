@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { NewTaskCardTrigger, Container } from './styles';
 import { CiCirclePlus } from 'react-icons/ci';
-import NewTaskCard from './NewTaskCard';
+import EditTaskCard from '../EditTaskCard';
 
 const AddTaskButton = () => {
   const [isAddingTask, setIsAddingTask] = useState(true);
@@ -21,7 +21,7 @@ const AddTaskButton = () => {
       >
         <CiCirclePlus />
       </NewTaskCardTrigger>
-      <NewTaskCard
+      <EditTaskCard
         isOpen={isAddingTask}
         onClose={() => {
           setIsAddingTask(false);

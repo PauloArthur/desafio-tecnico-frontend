@@ -10,7 +10,7 @@ import {
 import { type Task } from '../../types/Board';
 
 interface EditTaskCardProps {
-  task: Task;
+  task?: Task;
   isOpen: boolean;
   onClose: () => void;
 }
