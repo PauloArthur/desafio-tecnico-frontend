@@ -1,16 +1,20 @@
 import DOMPurify from 'dompurify';
 import { type Task, type NewTask } from '../types/Board';
 
-export const sanitize = (dirty: string): string => DOMPurify.sanitize(dirty);
+export const sanitizeToString = (dirty: string): string =>
+  DOMPurify.sanitize(dirty, { RETURN_DOM: false });
+
+export const sanitizeToMarkdown = (dirty: string): string =>
+  DOMPurify.sanitize(dirty);
 
 export const sanitizeNewTask = (task: NewTask): NewTask => ({
   lista: 'ToDo',
-  titulo: sanitize(task.titulo),
-  conteudo: sanitize(task.conteudo),
+  titulo: sanitizeToString(task.titulo),
+  conteudo: sanitizeToMarkdown(task.conteudo),
 });
 
 export const sanitizeTask = (task: Task): Task => ({
   ...task,
-  titulo: sanitize(task.titulo),
-  conteudo: sanitize(task.conteudo),
+  titulo: sanitizeToString(task.titulo),
+  conteudo: sanitizeToMarkdown(task.conteudo),
 });

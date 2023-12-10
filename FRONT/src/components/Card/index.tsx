@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { type Task } from '../../types/Board';
 import {
   ContentWrapper,
@@ -10,8 +11,8 @@ import {
   ArrowRightIcon,
 } from './styles';
 import EditTaskCard from '../EditTaskCard';
+import ContentMarkdown from '../ContentMarkdown';
 import { useKanban } from '../../contexts/KanbanContext';
-import { useState } from 'react';
 
 interface CardProps {
   task: Task;
@@ -42,7 +43,7 @@ const Card = ({ task }: CardProps) => {
               }}
             />
           </TitleWrapper>
-          <p>{conteudo}</p>
+          <ContentMarkdown value={conteudo} />
         </div>
         <ActionsWrapper className="actionsWrapper group-hover/column:opacity-25">
           {lista !== 'ToDo' ? (
