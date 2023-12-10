@@ -1,9 +1,8 @@
-import { useTheme } from 'styled-components';
 import { NavbarHeader } from './styles';
+import { useTheme } from '../../contexts/ThemeProvider';
 
 export default function Navbar() {
   const { isDarkMode, themeToggler } = useTheme();
-  console.log(isDarkMode);
   return (
     <NavbarHeader>
       <div className="container flex justify-end mx-auto">
