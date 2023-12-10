@@ -17,3 +17,5 @@ export interface Task {
   titulo: string;
   conteudo: string;
 }
+
+export type NewTask = Omit<Task, 'id' | 'lista'>;

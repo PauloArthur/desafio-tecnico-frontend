@@ -20,7 +20,7 @@ interface CardProps {
 const Card = ({ task }: CardProps) => {
   const { titulo, conteudo, lista } = task;
   const [isEditingTask, setIsEditingTask] = useState(false);
-  const { moveTaskPrevious, moveTaskNext, deleteTask } = useKanban();
+  const { moveTaskPrevious, moveTaskNext, deleteTask, editTask } = useKanban();
 
   const movePrevious = () => {
     moveTaskPrevious(task, lista);
@@ -61,6 +61,7 @@ const Card = ({ task }: CardProps) => {
       </ContentWrapper>
       <EditTaskCard
         task={task}
+        onSave={editTask}
         isOpen={isEditingTask}
         onClose={() => {
           setIsEditingTask(false);

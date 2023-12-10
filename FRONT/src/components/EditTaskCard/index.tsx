@@ -10,24 +10,31 @@ import {
 import { type Task } from '../../types/Board';
 
 interface EditTaskCardProps {
-  task?: Task;
+  task: Task;
   isOpen: boolean;
   onClose: () => void;
+  onSave: (task: Task) => void;
 }
 
 const EditTaskCard = ({
   task,
   isOpen,
+  onSave,
   onClose,
 }: EditTaskCardProps): JSX.Element => {
-  const [title, setTitle] = useState(task?.titulo ?? '');
-  const [content, setContent] = useState(task?.conteudo ?? '');
+  const [title, setTitle] = useState(task?.titulo);
+  const [content, setContent] = useState(task?.conteudo);
 
   const setTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
   const setContentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
+  };
+  const onSaveHandler = () => {
+    const newTask = { ...task, titulo: title, conteudo: content };
+    onSave(newTask);
+    onClose();
   };
 
   return (
@@ -48,7 +55,7 @@ const EditTaskCard = ({
         placeholder="Conteúdo"
         onChange={setContentHandler}
       />
-      <Button onClick={onClose}>Salvar</Button>
+      <Button onClick={onSaveHandler}>Salvar</Button>
     </CardContainer>
   );
 };

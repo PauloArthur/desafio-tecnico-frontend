@@ -7,13 +7,19 @@ import {
   InputWrapper,
   CardContainer,
 } from './styles';
+import { type NewTask } from '../../types/Board';
 
 interface NewTaskCardProps {
   isOpen: boolean;
   onClose: () => void;
+  onSave: (task: NewTask) => void;
 }
 
-const NewTaskCard = ({ isOpen, onClose }: NewTaskCardProps): JSX.Element => {
+const NewTaskCard = ({
+  isOpen,
+  onSave,
+  onClose,
+}: NewTaskCardProps): JSX.Element => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
@@ -22,6 +28,11 @@ const NewTaskCard = ({ isOpen, onClose }: NewTaskCardProps): JSX.Element => {
   };
   const setContentHandler = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
+  };
+  const onSaveHandler = () => {
+    const newTask = { titulo: title, conteudo: content };
+    onSave(newTask);
+    onClose();
   };
 
   return (
@@ -42,7 +53,7 @@ const NewTaskCard = ({ isOpen, onClose }: NewTaskCardProps): JSX.Element => {
         placeholder="Conteúdo"
         onChange={setContentHandler}
       />
-      <Button onClick={onClose}>Salvar</Button>
+      <Button onClick={onSaveHandler}>Salvar</Button>
     </CardContainer>
   );
 };

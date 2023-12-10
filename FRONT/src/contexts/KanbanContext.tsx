@@ -5,7 +5,12 @@ import {
   useEffect,
   createContext,
 } from 'react';
-import { type Task, type ListType, type MovementList } from '../types/Board';
+import {
+  type Task,
+  type ListType,
+  type MovementList,
+  type NewTask,
+} from '../types/Board';
 
 const previousList: MovementList = {
   ToDo: 'ToDo',
@@ -22,7 +27,9 @@ const KanbanContext = createContext<KanbanHook>({
   todoList: [],
   doingList: [],
   doneList: [],
+  editTask: (_task: Task) => null,
   deleteTask: (_task: Task) => null,
+  createTask: (_task: NewTask) => null,
   moveTaskNext: (_task: Task, _listType: ListType) => null,
   moveTaskPrevious: (_task: Task, _listType: ListType) => null,
 });
@@ -31,7 +38,9 @@ interface KanbanHook {
   todoList: Task[];
   doingList: Task[];
   doneList: Task[];
+  editTask: (task: Task) => void;
   deleteTask: (task: Task) => void;
+  createTask: (task: NewTask) => void;
   moveTaskNext: (task: Task, listType: ListType) => void;
   moveTaskPrevious: (task: Task, listType: ListType) => void;
 }
@@ -87,8 +96,7 @@ export const KanbanProvider = ({
   const moveTask = (task: Task, listType: ListType) => {
     if (listType === task.lista) return;
 
-    const newList = list.filter((item) => item.id !== task.id);
-    setList([...newList, { ...task, lista: listType }]);
+    editTask({ ...task, lista: listType });
   };
 
   const moveTaskPrevious = (task: Task, type: ListType) => {
@@ -97,6 +105,22 @@ export const KanbanProvider = ({
 
   const moveTaskNext = (task: Task, type: ListType) => {
     moveTask(task, nextList[type]);
+  };
+
+  const editTask = (task: Task) => {
+    const newList = list.filter((item) => item.id !== task.id);
+    setList([...newList, task]);
+  };
+
+  const createTask = (task: NewTask) => {
+    setList([
+      ...list,
+      {
+        ...task,
+        lista: 'ToDo',
+        id: new Date().getUTCMilliseconds().toString(),
+      },
+    ]);
   };
 
   const deleteTask = (task: Task) => {
@@ -108,9 +132,11 @@ export const KanbanProvider = ({
 
   const hooks: KanbanHook = {
     todoList,
-    doingList,
     doneList,
+    doingList,
+    editTask,
     deleteTask,
+    createTask,
     moveTaskNext,
     moveTaskPrevious,
   };
