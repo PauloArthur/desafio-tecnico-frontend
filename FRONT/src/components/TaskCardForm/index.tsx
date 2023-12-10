@@ -1,4 +1,5 @@
 import { type HookHandlerData } from '../../types/Board';
+import PreviewField from '../PreviewField';
 import {
   Input,
   Button,
@@ -44,12 +45,14 @@ function TaskCardForm<T>({
             }}
           />
         </InputWrapper>
-        <Textarea
-          value={content}
-          name="content"
-          placeholder="Conteúdo"
-          onChange={setContentHandler}
-        />
+        <PreviewField content={content}>
+          <Textarea
+            value={content}
+            name="content"
+            placeholder="Conteúdo"
+            onChange={setContentHandler}
+          />
+        </PreviewField>
       </div>
       <Button onClick={onSaveHandler}>Salvar</Button>
     </CardContainer>
