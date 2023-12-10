@@ -11,6 +11,7 @@ import {
   type NewTask,
 } from '../types/Board';
 import apiTasks from '../services/apiTasks';
+import { handleLogin } from '../services/api';
 
 interface KanbanHook {
   todoList: Task[];
@@ -22,6 +23,9 @@ interface KanbanHook {
   moveTaskNext: (task: Task, listType: ListType) => void;
   moveTaskPrevious: (task: Task, listType: ListType) => void;
 }
+
+await handleLogin();
+const initialList = await apiTasks.getTasks();
 
 const previousList: MovementList = {
   ToDo: 'ToDo',
@@ -44,8 +48,6 @@ const KanbanContext = createContext<KanbanHook>({
   moveTaskNext: (_task: Task, _listType: ListType) => null,
   moveTaskPrevious: (_task: Task, _listType: ListType) => null,
 });
-
-const initialList = await apiTasks.getTasks();
 
 export const KanbanProvider = ({
   children,
