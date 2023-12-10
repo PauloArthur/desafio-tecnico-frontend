@@ -1,46 +1,43 @@
-import { type NewTask, type Task } from '../types/Board';
 import api from './api';
+import { type AxiosResponse } from 'axios';
+import { type NewTask, type Task } from '../types/Board';
+import { sanitizeNewTask, sanitizeTask } from '../helpers/sanitizers';
 
-type ResponseType<T> = Promise<T | never>;
-
-const loadTasks = async (): ResponseType<Task[]> => {
+async function genericResponseHandler<T>(
+  request: () => Promise<AxiosResponse<T>>,
+  errorMessage: string = 'Erro ao realizar a requisição',
+): Promise<T> {
   try {
-    const response = await api.get<Task[]>(`cards`);
+    const response = await request();
     console.log(response);
     return response.data;
   } catch (error) {
     console.log(error);
-    throw new Error('Erro ao carregar as tarefas');
+    throw new Error(errorMessage);
   }
-};
+}
 
-const createTask = async (task: NewTask): ResponseType<Task> => {
-  try {
-    const response = await api.post(`cards`, { task });
-    console.log(response);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-    throw new Error('Erro ao criar a tarefa');
-  }
-};
+const getTasks = async () =>
+  await genericResponseHandler<Task[]>(
+    async () => await api.get(`cards`),
+    'Erro ao carregar as tarefas',
+  );
 
-const deleteTask = async (taskId: number) => {
-  try {
-    const response = await api.delete(`cards/${taskId}`);
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
-};
+const createTask = async (task: NewTask) =>
+  await genericResponseHandler<Task>(async () => {
+    const body = sanitizeNewTask(task);
+    return await api.post(`cards`, body);
+  }, 'Erro ao criar a tarefa');
 
-const updateTask = async (task: Task) => {
-  try {
-    const response = (await api.put(`cards/${task.id}`), task);
-    console.log(response);
-  } catch (error) {
-    console.log(error);
-  }
-};
+const deleteTask = async (taskId: string) =>
+  await genericResponseHandler<Task[]>(
+    async () => await api.delete(`cards/${taskId}`),
+    'Erro ao deletar a tarefa',
+  );
+const updateTask = async (task: Task) =>
+  await genericResponseHandler<Task>(async () => {
+    const body = sanitizeTask(task);
+    return await api.put(`cards/${task.id}`, body);
+  }, 'Erro ao editar a tarefa');
 
-export { loadTasks1, loadTasks, createTask, deleteTask, updateTask };
+export default { getTasks, createTask, deleteTask, updateTask };
