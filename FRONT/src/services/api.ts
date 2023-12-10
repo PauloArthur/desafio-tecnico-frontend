@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { type InternalAxiosRequestConfig } from 'axios';
 import { LocalStorage } from '../consts/localStorage';
 
 const { VITE_API_URL } = import.meta.env;
@@ -23,5 +23,17 @@ export const handleLogin = async (): Promise<void> => {
     console.log(error);
   }
 };
+
+const requestInterceptor = (
+  config: InternalAxiosRequestConfig,
+): InternalAxiosRequestConfig => {
+  const authAccessToken = localStorage.getItem(LocalStorage.ACCESS_TOKEN);
+  if (authAccessToken !== null) {
+    config.headers.set('Authorization', `Bearer ${authAccessToken}`);
+  }
+  return config;
+};
+
+api.interceptors.request.use(requestInterceptor);
 
 export default api;
