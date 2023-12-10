@@ -121,7 +121,4 @@ export const KanbanProvider = ({
   );
 };
 
-/**
- * Modal Provider Call Function
- */
 export const useKanban = (): KanbanHook => useContext(KanbanContext);

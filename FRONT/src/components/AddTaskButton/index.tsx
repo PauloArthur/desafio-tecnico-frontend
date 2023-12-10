@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { CiCirclePlus } from 'react-icons/ci';
 import { NewTaskCardTrigger, Container } from './styles';
 import NewTaskCard from '../NewTaskCard';
-import { useKanban } from '../../contexts/KanbanContext';
+import { useKanban } from '../../contexts/KanbanProvider';
 
 const AddTaskButton = () => {
   const { createTask } = useKanban();

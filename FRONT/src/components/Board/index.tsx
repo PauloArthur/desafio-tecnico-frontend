@@ -1,5 +1,5 @@
 import Column from '../Column';
-import { useKanban } from '../../contexts/KanbanContext';
+import { useKanban } from '../../contexts/KanbanProvider';
 
 const Board = () => {
   const { todoList, doingList, doneList } = useKanban();

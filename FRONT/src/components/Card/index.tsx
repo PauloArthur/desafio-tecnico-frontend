@@ -12,7 +12,7 @@ import {
 } from './styles';
 import EditTaskCard from '../EditTaskCard';
 import ContentMarkdown from '../ContentMarkdown';
-import { useKanban } from '../../contexts/KanbanContext';
+import { useKanban } from '../../contexts/KanbanProvider';
 
 interface CardProps {
   task: Task;
