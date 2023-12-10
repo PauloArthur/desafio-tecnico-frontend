@@ -22,8 +22,8 @@ const EditTaskCard = ({
   onSave,
   onClose,
 }: EditTaskCardProps): JSX.Element => {
-  const [title, setTitle] = useState(task?.titulo);
-  const [content, setContent] = useState(task?.conteudo);
+  const [title, setTitle] = useState(task.titulo);
+  const [content, setContent] = useState(task.conteudo);
 
   const setTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
@@ -32,8 +32,13 @@ const EditTaskCard = ({
     setContent(e.target.value);
   };
   const onSaveHandler = () => {
-    const newTask = { ...task, titulo: title, conteudo: content };
-    onSave(newTask);
+    const editedTask = { ...task, titulo: title, conteudo: content };
+    onSave(editedTask);
+    onCloseHandler(editedTask);
+  };
+  const onCloseHandler = (resetTask: Task = task) => {
+    setTitle(resetTask.titulo);
+    setContent(resetTask.conteudo);
     onClose();
   };
 
@@ -46,7 +51,11 @@ const EditTaskCard = ({
           placeholder="Título"
           onChange={setTitleHandler}
         />
-        <CloseIcon onClick={onClose} />
+        <CloseIcon
+          onClick={() => {
+            onCloseHandler();
+          }}
+        />
       </InputWrapper>
       <Textarea
         rows={5}

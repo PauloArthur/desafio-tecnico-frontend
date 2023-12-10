@@ -32,6 +32,11 @@ const NewTaskCard = ({
   const onSaveHandler = () => {
     const newTask = { titulo: title, conteudo: content };
     onSave(newTask);
+    onCloseHandler();
+  };
+  const onCloseHandler = () => {
+    setTitle('');
+    setContent('');
     onClose();
   };
 
@@ -44,7 +49,7 @@ const NewTaskCard = ({
           placeholder="Título"
           onChange={setTitleHandler}
         />
-        <CloseIcon onClick={onClose} />
+        <CloseIcon onClick={onCloseHandler} />
       </InputWrapper>
       <Textarea
         rows={5}
