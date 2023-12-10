@@ -16,7 +16,8 @@ const centerFlex = css`
 
 const inputStyles = css`
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.05);
+  color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.text}1A;
   &:focus-visible {
     outline: none;
   }
@@ -47,7 +48,7 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.colors.background};
   transition: all 0.25s ease;
   &.active {
     opacity: 1;
@@ -84,11 +85,13 @@ export const Textarea = styled.textarea`
 export const Button = styled.button`
   ${sizes}
   width: auto;
-  color: #fff;
+  opacity: 0.7;
+  font-weight: bold;
   border-radius: 4px;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: background-color 0.3s ease;
+  transition: opacity 0.3s ease;
+  color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) => theme.colors.text};
   &:hover {
-    background-color: rgba(0, 0, 0, 0.4);
+    opacity: 1;
   }
 `;

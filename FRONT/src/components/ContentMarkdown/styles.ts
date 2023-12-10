@@ -6,5 +6,6 @@ export const Container = styled.div`
   padding: 8px 16px;
   border-radius: 4px;
   overflow: scroll;
-  background: rgba(0, 0, 0, 0.1);
+  color: ${({ theme }) => theme.colors.text}E6;
+  background-color: ${({ theme }) => theme.colors.text}1A;
 `;

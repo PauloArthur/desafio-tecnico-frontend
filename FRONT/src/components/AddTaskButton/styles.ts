@@ -1,4 +1,6 @@
 import styled, { css } from 'styled-components';
+import { CiCirclePlus } from 'react-icons/ci';
+
 const centerFlex = css`
   display: flex;
   align-items: center;
@@ -21,15 +23,20 @@ export const Container = styled.div`
 export const NewTaskCardTrigger = styled.button`
   ${centerFlex}
   width: 100%;
-  color: #fff;
   height: 80px;
-  font-size: 32px;
   border-radius: 16px;
   flex-direction: column;
-  background-color: rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+  color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) => theme.colors.text};
   &:hover {
+    opacity: 0.6;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.3);
   }
+`;
+export const AddTaskIcon = styled(CiCirclePlus)`
+  font-size: 48px;
+  stroke-width: 1px;
+  color: ${({ theme }) => theme.colors.background};
 `;

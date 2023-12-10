@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { CiCirclePlus } from 'react-icons/ci';
-import { NewTaskCardTrigger, Container } from './styles';
 import NewTaskCard from '../NewTaskCard';
+import { NewTaskCardTrigger, Container, AddTaskIcon } from './styles';
 import { useKanban } from '../../contexts/KanbanProvider';
 
 const AddTaskButton = () => {
@@ -21,7 +20,7 @@ const AddTaskButton = () => {
           setIsAddingTask(true);
         }}
       >
-        <CiCirclePlus />
+        <AddTaskIcon />
       </NewTaskCardTrigger>
       <NewTaskCard
         isOpen={isAddingTask}

@@ -2,18 +2,18 @@ import { createGlobalStyle } from 'styled-components';
 
 export const lightTheme = {
   colors: {
-    body: '#FFF',
+    body: '#FFFFFF',
     text: '#363537',
-    toggleBorder: '#FFF',
-    background: '#363537',
+    background: '#FFFFFF',
+    toggleBorder: '#FFFFFF',
   },
 };
 export const darkTheme = {
   colors: {
     body: '#363537',
     text: '#FAFAFA',
-    toggleBorder: '#6B8096',
-    background: '#999',
+    background: '#000000',
+    toggleBorder: '#00000099',
   },
 };
 

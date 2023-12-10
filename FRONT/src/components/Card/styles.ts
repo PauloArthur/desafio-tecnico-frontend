@@ -29,10 +29,10 @@ export const ContentWrapper = styled.div`
   width: 100%;
   min-height: 210px;
   padding: 16px 24px;
-  background-color: #fff; // Theme
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: ${({ theme }) => theme.colors.background}CC;
   &:hover {
     .actionsWrapper,
     .deleteIcon {
