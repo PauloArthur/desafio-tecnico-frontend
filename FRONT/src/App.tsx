@@ -1,13 +1,15 @@
-import { KanbanBoard } from './components/index';
+import { Navbar, Board } from './components/index';
+import { ThemeProvider } from './contexts/ThemeProvider';
 import { KanbanProvider } from './contexts/KanbanProvider';
 
 function App(): JSX.Element {
   return (
-    <div className="h-screen p-10">
+    <ThemeProvider>
       <KanbanProvider>
-        <KanbanBoard />
+        <Navbar />
+        <Board />
       </KanbanProvider>
-    </div>
+    </ThemeProvider>
   );
 }
 

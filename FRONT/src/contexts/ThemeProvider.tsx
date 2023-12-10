@@ -5,7 +5,7 @@ import {
   useState,
 } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { GlobalStyles, darkTheme, lightTheme } from './themes';
+import { GlobalStyles, darkTheme, lightTheme } from '../components/themes';
 
 interface ThemeHook {
   isDarkMode: boolean;
