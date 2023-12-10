@@ -60,8 +60,8 @@ export const EditIcon = styled(FaEdit)`
 `;
 
 export const DeleteIcon = styled(FaTrash)`
-  color: red;
   opacity: 0;
+  color: #e32636;
   transition: opacity 0.3s ease;
   ${iconStyles};
 `;
