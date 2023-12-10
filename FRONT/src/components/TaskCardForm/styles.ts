@@ -38,7 +38,7 @@ export const CardContainer = styled.div`
   top: 0;
   opacity: 0;
   width: 100%;
-  height: 280px;
+  height: 100%;
   max-height: 80px;
   padding: 16px 24px;
   border-radius: 16px;
@@ -52,7 +52,8 @@ export const CardContainer = styled.div`
   &.active {
     opacity: 1;
     z-index: 10;
-    max-height: 280px;
+    max-height: none;
+    min-height: 280px;
   }
 `;
 
@@ -75,7 +76,7 @@ export const CloseIcon = styled(FaTimes)`
 
 export const Textarea = styled.textarea`
   ${sizes}
-  height: auto;
+  height: 100% !important;
   margin-bottom: 16px;
   ${inputStyles}
 `;
@@ -85,7 +86,6 @@ export const Button = styled.button`
   width: auto;
   color: #fff;
   border-radius: 4px;
-  margin-bottom: 16px;
   background-color: rgba(0, 0, 0, 0.5);
   transition: background-color 0.3s ease;
   &:hover {

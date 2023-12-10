@@ -30,26 +30,27 @@ function TaskCardForm<T>({
 
   return (
     <CardContainer className={`${isOpen ? 'active' : ''}`}>
-      <InputWrapper>
-        <Input
-          type="text"
-          value={title}
-          placeholder="Título"
-          onChange={setTitleHandler}
+      <div className="flex flex-col flex-1">
+        <InputWrapper>
+          <Input
+            type="text"
+            value={title}
+            placeholder="Título"
+            onChange={setTitleHandler}
+          />
+          <CloseIcon
+            onClick={() => {
+              onCloseHandler();
+            }}
+          />
+        </InputWrapper>
+        <Textarea
+          value={content}
+          name="content"
+          placeholder="Conteúdo"
+          onChange={setContentHandler}
         />
-        <CloseIcon
-          onClick={() => {
-            onCloseHandler();
-          }}
-        />
-      </InputWrapper>
-      <Textarea
-        rows={5}
-        value={content}
-        name="content"
-        placeholder="Conteúdo"
-        onChange={setContentHandler}
-      />
+      </div>
       <Button onClick={onSaveHandler}>Salvar</Button>
     </CardContainer>
   );

@@ -34,7 +34,7 @@ const Card = ({ task }: CardProps) => {
   return (
     <CardContainer className={`${isEditingTask ? 'active' : ''}`}>
       <ContentWrapper>
-        <div>
+        <div className="mb-4">
           <TitleWrapper>
             <h3>{titulo}</h3>
             <EditIcon
@@ -46,18 +46,20 @@ const Card = ({ task }: CardProps) => {
           <ContentMarkdown value={conteudo} />
         </div>
         <ActionsWrapper className="actionsWrapper group-hover/column:opacity-25">
-          {lista !== 'ToDo' ? (
-            <ArrowLeftIcon onClick={movePrevious} />
-          ) : (
-            <div />
-          )}
+          <ArrowLeftIcon
+            className={`${lista === 'ToDo' ? 'invisible' : ''}`}
+            onClick={movePrevious}
+          />
           <DeleteIcon
             className="deleteIcon"
             onClick={() => {
               deleteTask(task);
             }}
           />
-          {lista !== 'Done' ? <ArrowRightIcon onClick={moveNext} /> : <div />}
+          <ArrowRightIcon
+            className={`${lista === 'Done' ? 'invisible' : ''}`}
+            onClick={moveNext}
+          />
         </ActionsWrapper>
       </ContentWrapper>
       <EditTaskCard

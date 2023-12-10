@@ -4,11 +4,14 @@ import { FaArrowRight, FaArrowLeft, FaTrash } from 'react-icons/fa6';
 
 export const CardContainer = styled.div`
   overflow: hidden;
+  max-height: 50%;
+  min-height: 210px;
   position: relative;
+  margin-bottom: 16px;
+  border-radius: 16px;
   transition: all 0.3s ease;
   &.active {
     min-height: 280px;
-    margin-bottom: 16px;
   }
 `;
 
@@ -26,9 +29,7 @@ export const ContentWrapper = styled.div`
   width: 100%;
   min-height: 210px;
   padding: 16px 24px;
-  margin-bottom: 16px;
-  border-radius: 16px;
-  background-color: #fff;
+  background-color: #fff; // Theme
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,7 +44,7 @@ export const ContentWrapper = styled.div`
 export const ActionsWrapper = styled.div`
   opacity: 0;
   display: flex;
-  padding: 16px 0;
+  padding: 8px 0;
   transition: all 0.3s ease;
   justify-content: space-between;
 `;
