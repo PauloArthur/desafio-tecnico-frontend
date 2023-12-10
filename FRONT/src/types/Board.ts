@@ -1,3 +1,5 @@
+import { type ChangeEvent } from 'react';
+
 type ToDo = 'ToDo';
 type Doing = 'Doing';
 type Done = 'Done';
@@ -19,3 +21,11 @@ export interface Task {
 }
 
 export type NewTask = Omit<Task, 'id' | 'lista'>;
+export interface HookHandlerData {
+  title: string;
+  content: string;
+  onSaveHandler: () => void;
+  onCloseHandler: (resetTask?: Task) => void;
+  setTitleHandler: (e: ChangeEvent<HTMLInputElement>) => void;
+  setContentHandler: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+}
