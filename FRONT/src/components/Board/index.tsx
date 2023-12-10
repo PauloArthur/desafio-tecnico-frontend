@@ -1,15 +1,16 @@
 import Column from '../Column';
+import { Container } from './styles';
 import { useKanban } from '../../contexts/KanbanProvider';
 
 const Board = () => {
   const { todoList, doingList, doneList } = useKanban();
 
   return (
-    <div className="container h-full mx-auto columns-3">
+    <Container className="container">
       <Column name="ToDo" tasks={todoList} />
       <Column name="Doing" tasks={doingList} />
       <Column name="Done" tasks={doneList} />
-    </div>
+    </Container>
   );
 };
 
