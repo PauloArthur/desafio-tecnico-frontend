@@ -13,14 +13,15 @@ export interface List {
 
 export type MovementList = Record<ListType, ListType>;
 
-export interface Task {
-  id: string;
-  lista: ListType;
+export interface NewTask {
+  id?: string;
+  lista?: ListType;
   titulo: string;
   conteudo: string;
 }
 
-export type NewTask = Omit<Task, 'id' | 'lista'>;
+export type Task = Required<NewTask>;
+
 export interface HookHandlerData {
   title: string;
   content: string;
