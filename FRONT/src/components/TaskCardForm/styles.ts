@@ -54,7 +54,7 @@ export const CardContainer = styled.div`
     opacity: 1;
     z-index: 10;
     max-height: none;
-    min-height: 280px;
+    min-height: 300px;
   }
 `;
 
@@ -76,8 +76,9 @@ export const CloseIcon = styled(FaTimes)`
 
 export const Textarea = styled.textarea`
   ${sizes}
-  height: 100% !important;
   ${inputStyles}
+  height: 100%;
+  min-height: 90px;
 `;
 
 export const Button = styled.button`

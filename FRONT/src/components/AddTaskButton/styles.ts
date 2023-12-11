@@ -15,7 +15,7 @@ export const Container = styled.div`
   position: relative;
   transition: all 0.3s ease;
   &.active {
-    max-height: 280px;
+    max-height: 300px;
     margin-bottom: 16px;
   }
 `;

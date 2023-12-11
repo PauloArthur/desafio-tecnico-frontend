@@ -176,7 +176,7 @@ const darkThemeMarkdown = css`
 
 export const Container = styled.div`
   height: 100%;
-  max-height: 280px;
+  max-height: 300px;
   padding: 8px 16px;
   border-radius: 4px;
   overflow: scroll;

@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
   border-radius: 16px;
   transition: all 0.3s ease;
   &.active {
-    min-height: 280px;
+    min-height: 300px;
   }
 `;
 
