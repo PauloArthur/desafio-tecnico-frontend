@@ -1,3 +1,6 @@
+
+### Setup: 
+
 Para rodá-lo, faça:
 
 ```console
@@ -6,7 +9,8 @@ Para rodá-lo, faça:
 > cp .env.example .env
 > npm run preview
 ```
-Extras: 
+
+### Extras: 
 
 Temas claro e escuro são monocromáticos inicialmente, mas pode-se adicionar duas cores principais no `.env`, por exemplo:
 
@@ -21,3 +25,5 @@ VITE_SECONDARY='#8f92ff'
 Os campos de conteúdo possuem um modo preview, e os markdowns de código também mudam de tema entre claro e escuro:
 
 https://github.com/PauloArthur/desafio-tecnico-frontend/assets/20481937/2328d525-8e46-4e43-a1c2-67e2229790f1
+
+PS: Tomei a liberdade de me referir a `Card` por `Task` nos arquivos por preferência pessoal.
