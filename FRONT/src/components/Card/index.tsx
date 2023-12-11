@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { type Task } from '../../types/Board';
 import {
   ContentWrapper,
   CardContainer,
@@ -12,7 +11,7 @@ import {
 } from './styles';
 import EditTaskCard from '../EditTaskCard';
 import ContentMarkdown from '../ContentMarkdown';
-import { useKanban } from '../../contexts/KanbanProvider';
+import { useKanban } from '@contexts/KanbanProvider';
 
 interface CardProps {
   task: Task;

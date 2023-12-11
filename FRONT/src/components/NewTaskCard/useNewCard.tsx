@@ -1,4 +1,3 @@
-import { type HookHandlerData, type NewTask } from '../../types/Board';
 import { type ChangeEvent, useState } from 'react';
 
 export interface NewCardHookArgs {

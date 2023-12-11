@@ -1,5 +1,4 @@
 import DOMPurify from 'dompurify';
-import { type Task, type NewTask } from '../types/Board';
 
 export const sanitizeToString = (dirty: string): string =>
   DOMPurify.sanitize(dirty, { RETURN_DOM: false });

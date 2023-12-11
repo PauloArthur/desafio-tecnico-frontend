@@ -1,4 +1,3 @@
-import { type Task } from '../../types/Board';
 import TaskCardForm from '../TaskCardForm';
 import useEditCard from './useEditCard';
 

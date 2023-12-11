@@ -1,5 +1,4 @@
 import { type MouseEvent, useState, type ChangeEvent } from 'react';
-import { type HookHandlerData } from '../../types/Board';
 import PreviewField from '../PreviewField';
 import {
   Input,
@@ -54,7 +53,7 @@ function TaskCardForm<T>({
 
   return (
     <CardContainer className={`${isOpen ? 'active' : ''}`}>
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col flex-1">
         <InputLabel error={titleError}>
           <InputWrapper>
             <Input
@@ -73,9 +72,10 @@ function TaskCardForm<T>({
             />
           </InputWrapper>
         </InputLabel>
-        <InputLabel error={contentError}>
+        <InputLabel error={contentError} className="h-full">
           <PreviewField content={content}>
             <Textarea
+              rows={4}
               name="content"
               value={content}
               placeholder="Conteúdo"

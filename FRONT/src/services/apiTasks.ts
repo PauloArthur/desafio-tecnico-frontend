@@ -1,7 +1,6 @@
 import api from './api';
 import { type AxiosResponse } from 'axios';
-import { type NewTask, type Task } from '../types/Board';
-import { sanitizeNewTask, sanitizeTask } from '../helpers/sanitizers';
+import { sanitizeNewTask, sanitizeTask } from '@helpers/sanitizers';
 
 async function genericResponseHandler<T>(
   request: () => Promise<AxiosResponse<T>>,

@@ -4,14 +4,8 @@ import {
   useContext,
   createContext,
 } from 'react';
-import {
-  type Task,
-  type ListType,
-  type MovementList,
-  type NewTask,
-} from '../types/Board';
-import apiTasks from '../services/apiTasks';
-import { handleLogin } from '../services/api';
+import apiTasks from '@services/apiTasks';
+import { handleLogin } from '@services/api';
 
 interface KanbanHook {
   todoList: Task[];

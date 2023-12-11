@@ -1,28 +1,26 @@
-import { type ChangeEvent } from 'react';
-
 type ToDo = 'ToDo';
 type Doing = 'Doing';
 type Done = 'Done';
 
-export type ListType = ToDo | Doing | Done;
+type ListType = ToDo | Doing | Done;
 
-export interface List {
+interface List {
   name: ListType;
   tasks: Task[];
 }
 
-export type MovementList = Record<ListType, ListType>;
+type MovementList = Record<ListType, ListType>;
 
-export interface NewTask {
+interface NewTask {
   id?: string;
   lista?: ListType;
   titulo: string;
   conteudo: string;
 }
 
-export type Task = Required<NewTask>;
+type Task = Required<NewTask>;
 
-export interface HookHandlerData {
+interface HookHandlerData {
   title: string;
   content: string;
   onSaveHandler: () => void;

@@ -3,7 +3,7 @@ import { Container } from './styles';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
-import { useTheme } from '../../contexts/ThemeProvider';
+import { useTheme } from '@contexts/ThemeProvider';
 
 export const ContentMarkdown = ({ value }: { value: string }) => {
   const { isDarkMode } = useTheme();

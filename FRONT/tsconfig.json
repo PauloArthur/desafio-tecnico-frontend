@@ -23,7 +23,19 @@
     /* Type checking */
     "composite": true,
     "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+
+    /* Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*", "./dist/*", ""],
+      "@components/*": ["src/components/*"],
+      "@types/*": ["src/types/*"],
+      "@consts/*": ["src/consts/*"],
+      "@contexts/*": ["src/contexts/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@services/*": ["src/services/*"],
+    }
   },
   "include": ["src", "*.config.js", "*.config.ts", ".eslintrc.cjs"],
 }

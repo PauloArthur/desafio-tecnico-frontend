@@ -1,6 +1,5 @@
 import TaskCardForm from '../TaskCardForm';
 import useNewCard from './useNewCard';
-import { type NewTask } from '../../types/Board';
 
 interface NewTaskHookArgs {
   onClose: () => void;

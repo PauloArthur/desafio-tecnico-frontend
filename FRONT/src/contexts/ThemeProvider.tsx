@@ -5,9 +5,9 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { LocalStorage } from '../consts/localStorage';
+import { LocalStorage } from '@consts/localStorage';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { GlobalStyles, darkTheme, lightTheme } from '../components/themes';
+import { GlobalStyles, darkTheme, lightTheme } from '@components/themes';
 
 interface ThemeHook {
   isDarkMode: boolean;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import NewTaskCard from '../NewTaskCard';
+import { useKanban } from '@contexts/KanbanProvider';
 import { NewTaskCardTrigger, Container, AddTaskIcon } from './styles';
-import { useKanban } from '../../contexts/KanbanProvider';
 
 const AddTaskButton = ({ isEmptyList }: { isEmptyList: boolean }) => {
   const { createTask } = useKanban();

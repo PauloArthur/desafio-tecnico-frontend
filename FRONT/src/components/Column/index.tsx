@@ -1,6 +1,5 @@
 import Card from '../Card';
 import AddTaskButton from '../AddTaskButton';
-import { type List } from '../../types/Board';
 import { ListContainer, Container } from './styles';
 
 const Column = ({ name, tasks }: List): JSX.Element => {

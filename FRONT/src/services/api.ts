@@ -1,5 +1,5 @@
+import { LocalStorage } from '@consts/localStorage';
 import axios, { type InternalAxiosRequestConfig } from 'axios';
-import { LocalStorage } from '../consts/localStorage';
 
 const { VITE_API_URL } = import.meta.env;
 
