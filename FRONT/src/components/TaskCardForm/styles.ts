@@ -48,7 +48,8 @@ export const CardContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.background};
+  background-color: ${({ theme }) =>
+    theme.colors.primary ?? theme.colors.background};
   transition: all 0.25s ease;
   &.active {
     opacity: 1;
@@ -89,7 +90,8 @@ export const Button = styled.button`
   border-radius: 4px;
   transition: opacity 0.3s ease;
   color: ${({ theme }) => theme.colors.background};
-  background-color: ${({ theme }) => theme.colors.text};
+  background-color: ${({ theme }) =>
+    theme.colors.secondary ?? theme.colors.text};
   &:hover {
     opacity: 1;
   }

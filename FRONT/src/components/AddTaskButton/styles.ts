@@ -24,14 +24,15 @@ export const NewTaskCardTrigger = styled.button`
   ${centerFlex}
   width: 100%;
   height: 80px;
-  opacity: 0.3;
+  opacity: 0.5;
   border-radius: 16px;
   flex-direction: column;
   transition: opacity 0.3s ease;
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.secondary ?? theme.colors.text};
+  background-color: ${({ theme }) =>
+    theme.colors.secondary ?? theme.colors.text};
   &:hover {
-    opacity: 0.6;
+    opacity: 0.8;
     cursor: pointer;
   }
 `;

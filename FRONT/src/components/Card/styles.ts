@@ -32,7 +32,8 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.colors.background}CC;
+  background-color: ${({ theme }) =>
+    theme.colors.primary ?? theme.colors.background}CC;
   &:hover {
     .actionsWrapper,
     .deleteIcon {
