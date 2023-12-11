@@ -5,7 +5,7 @@ export const lightTheme = {
     body: '#FFFFFF',
     text: '#363537',
     background: '#FFFFFF',
-    toggleBorder: '#FFFFFF',
+    toggleButton: '#808080',
   },
 };
 export const darkTheme = {
@@ -13,7 +13,7 @@ export const darkTheme = {
     body: '#363537',
     text: '#FAFAFA',
     background: '#000000',
-    toggleBorder: '#00000099',
+    toggleButton: '#C0C0C0',
   },
 };
 
