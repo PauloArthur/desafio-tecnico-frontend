@@ -3,16 +3,16 @@ import NewTaskCard from '../NewTaskCard';
 import { NewTaskCardTrigger, Container, AddTaskIcon } from './styles';
 import { useKanban } from '../../contexts/KanbanProvider';
 
-const AddTaskButton = () => {
+const AddTaskButton = ({ isEmptyList }: { isEmptyList: boolean }) => {
   const { createTask } = useKanban();
   const [isAddingTask, setIsAddingTask] = useState(false);
 
   return (
     <Container
       className={`${
-        isAddingTask
+        isAddingTask || isEmptyList
           ? 'active'
-          : 'group-hover/column:max-h-[80px] group-hover/column:mb-4'
+          : 'group-hover/column:max-h-20 group-hover/column:mb-4'
       }`}
     >
       <NewTaskCardTrigger

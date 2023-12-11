@@ -24,9 +24,9 @@ export const NewTaskCardTrigger = styled.button`
   ${centerFlex}
   width: 100%;
   height: 80px;
+  opacity: 0.3;
   border-radius: 16px;
   flex-direction: column;
-  opacity: 0.3;
   transition: opacity 0.3s ease;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.text};
