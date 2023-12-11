@@ -19,7 +19,6 @@ export const ShowPreviewIcon = styled(FaRegEyeSlash)`
 
 export const Container = styled.div`
   height: 100%;
-  margin-bottom: 16px;
   position: relative;
 `;
 

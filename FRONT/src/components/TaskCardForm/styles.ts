@@ -60,7 +60,6 @@ export const CardContainer = styled.div`
 
 export const InputWrapper = styled.div`
   ${centerFlex}
-  padding: 16px 0;
   justify-content: space-between;
 `;
 
@@ -78,7 +77,6 @@ export const CloseIcon = styled(FaTimes)`
 export const Textarea = styled.textarea`
   ${sizes}
   height: 100% !important;
-  margin-bottom: 16px;
   ${inputStyles}
 `;
 
