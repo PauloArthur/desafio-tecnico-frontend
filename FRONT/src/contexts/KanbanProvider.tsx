@@ -3,6 +3,7 @@ import {
   useState,
   useContext,
   createContext,
+  useEffect,
 } from 'react';
 import apiTasks from '@services/apiTasks';
 import { handleLogin } from '@services/api';
@@ -17,9 +18,6 @@ interface KanbanHook {
   moveTaskNext: (task: Task, listType: ListType) => void;
   moveTaskPrevious: (task: Task, listType: ListType) => void;
 }
-
-await handleLogin();
-const initialList = await apiTasks.getTasks();
 
 const previousList: MovementList = {
   ToDo: 'ToDo',
@@ -46,7 +44,7 @@ const KanbanContext = createContext<KanbanHook>({
 export const KanbanProvider = ({
   children,
 }: PropsWithChildren): JSX.Element => {
-  const [list, setList] = useState<Task[]>(initialList);
+  const [list, setList] = useState<Task[]>([]);
   const todoList = list.filter((item) => item.lista === 'ToDo');
   const doingList = list.filter((item) => item.lista === 'Doing');
   const doneList = list.filter((item) => item.lista === 'Done');
@@ -98,6 +96,18 @@ export const KanbanProvider = ({
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await handleLogin();
+      const initialList = await apiTasks.getTasks();
+      setList(initialList);
+    };
+
+    fetchData().catch((err) => {
+      console.log(err);
+    });
+  }, []);
 
   const hooks: KanbanHook = {
     todoList,
