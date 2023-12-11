@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import NewTaskCard from '../NewTaskCard';
+
+import { NewTaskCard } from '@components/index';
 import { useKanban } from '@contexts/KanbanProvider';
 import { NewTaskCardTrigger, Container, AddTaskIcon } from './styles';
 

@@ -1,5 +1,5 @@
-import TaskCardForm from '../TaskCardForm';
 import useNewCard from './useNewCard';
+import { TaskCardForm } from '@components/index';
 
 interface NewTaskHookArgs {
   onClose: () => void;

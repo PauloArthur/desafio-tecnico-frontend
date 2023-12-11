@@ -1,5 +1,5 @@
-import Card from '../Card';
-import AddTaskButton from '../AddTaskButton';
+import { Card, AddTaskButton } from '@components/index';
+
 import { ListContainer, Container } from './styles';
 
 const Column = ({ name, tasks }: List): JSX.Element => {

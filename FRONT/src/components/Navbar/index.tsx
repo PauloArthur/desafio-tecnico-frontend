@@ -1,5 +1,6 @@
-import { NavbarHeader } from './styles';
 import { useTheme } from '@contexts/ThemeProvider';
+
+import { NavbarHeader } from './styles';
 
 export default function Navbar() {
   const { isDarkMode, themeToggler } = useTheme();

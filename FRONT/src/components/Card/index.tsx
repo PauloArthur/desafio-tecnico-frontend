@@ -1,4 +1,8 @@
 import { useState } from 'react';
+
+import { useKanban } from '@contexts/KanbanProvider';
+import { EditTaskCard, ContentMarkdown } from '@components/index';
+
 import {
   ContentWrapper,
   CardContainer,
@@ -9,9 +13,6 @@ import {
   DeleteIcon,
   ArrowRightIcon,
 } from './styles';
-import EditTaskCard from '../EditTaskCard';
-import ContentMarkdown from '../ContentMarkdown';
-import { useKanban } from '@contexts/KanbanProvider';
 
 interface CardProps {
   task: Task;

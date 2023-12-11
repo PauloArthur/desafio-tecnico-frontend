@@ -1,5 +1,8 @@
 import { type MouseEvent, useState, type ChangeEvent } from 'react';
-import PreviewField from '../PreviewField';
+
+import InputLabel from './InputLabel';
+import { PreviewField } from '@components/index';
+
 import {
   Input,
   Button,
@@ -8,7 +11,6 @@ import {
   InputWrapper,
   CardContainer,
 } from './styles';
-import InputLabel from './InputLabel';
 
 interface TaskCardFormProps<T> {
   isOpen: boolean;

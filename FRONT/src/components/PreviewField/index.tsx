@@ -1,4 +1,7 @@
 import { type PropsWithChildren, useState } from 'react';
+
+import { ContentMarkdown } from '@components/index';
+
 import {
   Container,
   IconWrapper,
@@ -6,7 +9,6 @@ import {
   PreviewWrapper,
   ShowPreviewIcon,
 } from './styles';
-import ContentMarkdown from '../ContentMarkdown';
 
 export const PreviewField = ({
   content,

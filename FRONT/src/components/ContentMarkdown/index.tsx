@@ -1,9 +1,11 @@
 import 'gfm.css/gfm.css';
-import { Container } from './styles';
-import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import Markdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight';
+
 import { useTheme } from '@contexts/ThemeProvider';
+
+import { Container } from './styles';
 
 export const ContentMarkdown = ({ value }: { value: string }) => {
   const { isDarkMode } = useTheme();

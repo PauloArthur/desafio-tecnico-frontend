@@ -1,2 +1,10 @@
+export { default as Card } from './Card/index';
 export { default as Board } from './Board/index';
 export { default as Navbar } from './Navbar/index';
+export { default as Column } from './Column/index';
+export { default as NewTaskCard } from './NewTaskCard/index';
+export { default as EditTaskCard } from './EditTaskCard/index';
+export { default as PreviewField } from './PreviewField/index';
+export { default as TaskCardForm } from './TaskCardForm/index';
+export { default as AddTaskButton } from './AddTaskButton/index';
+export { default as ContentMarkdown } from './ContentMarkdown/index';

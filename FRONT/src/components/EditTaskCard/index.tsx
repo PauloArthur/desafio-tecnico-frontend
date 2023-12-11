@@ -1,5 +1,5 @@
-import TaskCardForm from '../TaskCardForm';
 import useEditCard from './useEditCard';
+import { TaskCardForm } from '@components/index';
 
 interface EditTaskHookArgs {
   task: Task;
