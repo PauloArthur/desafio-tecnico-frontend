@@ -74,7 +74,7 @@ function TaskCardForm<T>({
             />
           </InputWrapper>
         </InputLabel>
-        <InputLabel error={contentError} className="h-full">
+        <InputLabel error={contentError} className="h-full pb-4">
           <PreviewField content={content}>
             <Textarea
               rows={4}

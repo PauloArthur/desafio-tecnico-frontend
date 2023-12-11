@@ -13,7 +13,7 @@ const InputLabel = ({
   errorMessage = 'Campo obrigatório',
 }: PropsWithChildren<InputLabelProps>) => {
   return (
-    <div className={`relative w-full py-3 ${className}`}>
+    <div className={`relative w-full pt-4 pb-2 ${className}`}>
       <label
         className={`absolute top-0 left-0 text-xs text-[#e32636] invisible ${
           error ? '!visible' : ''
