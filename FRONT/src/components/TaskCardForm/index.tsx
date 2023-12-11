@@ -86,7 +86,7 @@ function TaskCardForm<T>({
           </PreviewField>
         </InputLabel>
       </div>
-      <Button onClick={validateForm}>Salvar</Button>
+      <Button onClick={validateForm}>Save</Button>
     </CardContainer>
   );
 }

@@ -10,7 +10,7 @@ const InputLabel = ({
   error,
   children,
   className = '',
-  errorMessage = 'Campo obrigatório',
+  errorMessage = 'Required field',
 }: PropsWithChildren<InputLabelProps>) => {
   return (
     <div className={`relative w-full pt-4 pb-2 ${className}`}>

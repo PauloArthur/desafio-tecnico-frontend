@@ -19,24 +19,24 @@ async function genericResponseHandler<T>(
 const getTasks = async () =>
   await genericResponseHandler<Task[]>(
     async () => await api.get(`cards`),
-    'Erro ao carregar as tarefas',
+    'Error loading tasks',
   );
 
 const createTask = async (task: NewTask) =>
   await genericResponseHandler<Task>(async () => {
     const body = sanitizeNewTask(task);
     return await api.post(`cards`, body);
-  }, 'Erro ao criar a tarefa');
+  }, 'Error creating task');
 
 const deleteTask = async (taskId: string) =>
   await genericResponseHandler<Task[]>(
     async () => await api.delete(`cards/${taskId}`),
-    'Erro ao deletar a tarefa',
+    'Error deleting task',
   );
 const updateTask = async (task: Task) =>
   await genericResponseHandler<Task>(async () => {
     const body = sanitizeTask(task);
     return await api.put(`cards/${task.id}`, body);
-  }, 'Erro ao editar a tarefa');
+  }, 'Error updating task');
 
 export default { getTasks, createTask, deleteTask, updateTask };
