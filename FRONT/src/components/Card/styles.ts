@@ -4,7 +4,7 @@ import { FaArrowRight, FaArrowLeft, FaTrash } from 'react-icons/fa6';
 
 export const CardContainer = styled.div`
   overflow: hidden;
-  max-height: 50%;
+  max-height: 500px;
   min-height: 210px;
   position: relative;
   margin-bottom: 16px;

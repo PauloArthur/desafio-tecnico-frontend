@@ -182,6 +182,12 @@ export const Container = styled.div`
   overflow: scroll;
   color: ${({ theme }) => theme.colors.text}E6;
   background-color: ${({ theme }) => theme.colors.text}1A;
+  pre {
+    padding: 0;
+    code {
+      overflow: scroll;
+    }
+  }
   &.dark-theme {
     ${darkThemeMarkdown}
   }

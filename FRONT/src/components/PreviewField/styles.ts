@@ -36,7 +36,7 @@ export const PreviewWrapper = styled.div`
   z-index: -1;
   height: 100%;
   ${absoluteStyles}
-  background-color: ${({ theme }) => theme.colors.background}1A;
+  background-color: ${({ theme }) => theme.colors.background};
   transition: all 0.3s ease;
   &.active {
     z-index: 10;
