@@ -16,7 +16,6 @@ app.use((req, res, next) => {
 })
 
 app.post('/login', (req, res) => {
-
     const { login, senha } = req.body;
     const { DEFAULT_LOGIN, DEFAULT_PASSWORD, JWT_SECRET } = process.env;
     if (login === DEFAULT_LOGIN && senha === DEFAULT_PASSWORD) {
@@ -112,4 +111,4 @@ app.delete('/cards/:id', (req, res) => {
     res.json(cards);
 });
 
-app.listen(5000, () => console.log('listening on http://localhost:5000'));
+app.listen(5001, () => console.log('listening on http://localhost:5001'));

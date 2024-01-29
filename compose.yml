@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  backend:
+    container_name: back-dev
+    image: back-dev
+    build:
+      context: .
+      dockerfile: ./docker/back/Dockerfile
+      target: development
+    volumes:
+      - ./BACK:/app/BACK/
+      - /app/BACK/node_modules
+    ports:
+      - 5001:5001
+  frontend:
+    container_name: front-dev
+    image: front-dev
+    build:
+      context: .
+      dockerfile: ./docker/front/Dockerfile
+      target: development
+    volumes:
+      - ./FRONT:/app/FRONT/
+      - /app/FRONT/node_modules
+    ports:
+      - 4173:4174
